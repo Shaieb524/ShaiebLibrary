@@ -1,3 +1,4 @@
+using ShaiebLibrary.BookCatalog.Application.Extensions;
 using ShaiebLibrary.BookCatalog.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,8 +8,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add Infrastructure services
+// Add Infrastructure services (DbContext and Repositories)
 builder.Services.AddInfrastructure(builder.Configuration);
+
+// Add Application services (Business logic services)
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
