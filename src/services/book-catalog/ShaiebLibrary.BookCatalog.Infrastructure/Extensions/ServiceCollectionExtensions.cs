@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ShaiebLibrary.BookCatalog.Domain.Interfaces;
 using ShaiebLibrary.BookCatalog.Infrastructure.Data;
+using ShaiebLibrary.BookCatalog.Infrastructure.Repositories;
 
 namespace ShaiebLibrary.BookCatalog.Infrastructure.Extensions;
 
@@ -17,6 +19,12 @@ public static class ServiceCollectionExtensions
                 configuration.GetConnectionString("DefaultConnection"),
                 b => b.MigrationsAssembly("ShaiebLibrary.BookCatalog.Infrastructure")
             ));
+
+        // Register Repositories
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IPublisherRepository, PublisherRepository>();
 
         return services;
     }
