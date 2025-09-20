@@ -226,21 +226,23 @@ public class BookCatalogContext : DbContext
 
     private static void SeedData(ModelBuilder modelBuilder)
     {
+        var seedDate = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         // Seed Categories
         modelBuilder.Entity<Category>().HasData(
-            new Category { Id = 1, Name = "Fiction", Description = "Fictional literature", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = 2, Name = "Non-Fiction", Description = "Non-fictional literature", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = 3, Name = "Science", Description = "Scientific books", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = 4, Name = "History", Description = "Historical books", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = 5, Name = "Technology", Description = "Technology and programming books", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Category { Id = 6, Name = "Literature", Description = "Classic and modern literature", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+            new Category { Id = 1, Name = "Fiction", Description = "Fictional literature", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Category { Id = 2, Name = "Non-Fiction", Description = "Non-fictional literature", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Category { Id = 3, Name = "Science", Description = "Scientific books", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Category { Id = 4, Name = "History", Description = "Historical books", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Category { Id = 5, Name = "Technology", Description = "Technology and programming books", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Category { Id = 6, Name = "Literature", Description = "Classic and modern literature", CreatedAt = seedDate, UpdatedAt = seedDate }
         );
 
         // Seed Publishers
         modelBuilder.Entity<Publisher>().HasData(
-            new Publisher { Id = 1, Name = "Penguin Random House", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Publisher { Id = 2, Name = "HarperCollins", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
-            new Publisher { Id = 3, Name = "O'Reilly Media", CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
+            new Publisher { Id = 1, Name = "Penguin Random House", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Publisher { Id = 2, Name = "HarperCollins", CreatedAt = seedDate, UpdatedAt = seedDate },
+            new Publisher { Id = 3, Name = "O'Reilly Media", CreatedAt = seedDate, UpdatedAt = seedDate }
         );
     }
 }
