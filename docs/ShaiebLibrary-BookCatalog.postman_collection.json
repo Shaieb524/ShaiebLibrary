@@ -1,0 +1,946 @@
+{
+	"info": {
+		"_postman_id": "12345678-1234-1234-1234-123456789012",
+		"name": "ShaiebLibrary - Book Catalog API",
+		"description": "Postman collection for ShaiebLibrary Book Catalog API endpoints. This collection includes all CRUD operations for Books, Authors, Categories, and Publishers.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all books with pagination support"
+					}
+				},
+				{
+					"name": "Get Book by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/{{bookId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"{{bookId}}"
+							]
+						},
+						"description": "Get a specific book by ID with full details"
+					}
+				},
+				{
+					"name": "Get Book by ISBN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/isbn/{{isbn}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"isbn",
+								"{{isbn}}"
+							]
+						},
+						"description": "Get a book by its ISBN"
+					}
+				},
+				{
+					"name": "Search Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/search?title=example&author=author&isbn=123&language=1&status=1&page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "example"
+								},
+								{
+									"key": "author",
+									"value": "author"
+								},
+								{
+									"key": "isbn",
+									"value": "123"
+								},
+								{
+									"key": "language",
+									"value": "1",
+									"description": "1=English, 2=Russian, 3=Arabic"
+								},
+								{
+									"key": "status",
+									"value": "1",
+									"description": "1=Available, 2=CheckedOut, 3=Reserved, 4=Maintenance, 5=Lost, 6=Damaged"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Search books with various criteria"
+					}
+				},
+				{
+					"name": "Get Books by Language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/language/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"language",
+								"1"
+							]
+						},
+						"description": "Get books by language (1=English, 2=Russian, 3=Arabic)"
+					}
+				},
+				{
+					"name": "Get Books by Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/status/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"status",
+								"1"
+							]
+						},
+						"description": "Get books by status (1=Available, 2=CheckedOut, 3=Reserved, 4=Maintenance, 5=Lost, 6=Damaged)"
+					}
+				},
+				{
+					"name": "Get Available Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/available",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"available"
+							]
+						},
+						"description": "Get all available books"
+					}
+				},
+				{
+					"name": "Get Books by Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/author/{{authorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"author",
+								"{{authorId}}"
+							]
+						},
+						"description": "Get all books by a specific author"
+					}
+				},
+				{
+					"name": "Get Books by Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/category/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"category",
+								"{{categoryId}}"
+							]
+						},
+						"description": "Get all books in a specific category"
+					}
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Sample Book Title\",\n  \"subtitle\": \"Sample Subtitle\",\n  \"isbn\": \"978-0123456789\",\n  \"isbn13\": \"978-0123456789\",\n  \"language\": 1,\n  \"publishedDate\": \"2024-01-01T00:00:00Z\",\n  \"pages\": 300,\n  \"description\": \"A sample book description\",\n  \"quantity\": 5,\n  \"price\": 29.99,\n  \"coverImageUrl\": \"https://example.com/cover.jpg\",\n  \"publisherId\": 1,\n  \"authorIds\": [1, 2],\n  \"categoryIds\": [1, 3]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						},
+						"description": "Create a new book"
+					}
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated Book Title\",\n  \"subtitle\": \"Updated Subtitle\",\n  \"isbn\": \"978-0123456789\",\n  \"isbn13\": \"978-0123456789\",\n  \"language\": 1,\n  \"publishedDate\": \"2024-01-01T00:00:00Z\",\n  \"pages\": 350,\n  \"description\": \"Updated book description\",\n  \"quantity\": 3,\n  \"price\": 34.99,\n  \"coverImageUrl\": \"https://example.com/updated-cover.jpg\",\n  \"publisherId\": 1,\n  \"authorIds\": [1, 2, 3],\n  \"categoryIds\": [1, 2]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/books/{{bookId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"{{bookId}}"
+							]
+						},
+						"description": "Update an existing book"
+					}
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/{{bookId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"{{bookId}}"
+							]
+						},
+						"description": "Delete a book"
+					}
+				},
+				{
+					"name": "Update Book Availability",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "5"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/books/{{bookId}}/availability",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"{{bookId}}",
+								"availability"
+							]
+						},
+						"description": "Update book availability quantity"
+					}
+				},
+				{
+					"name": "Check Book Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/books/{{bookId}}/availability",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"{{bookId}}",
+								"availability"
+							]
+						},
+						"description": "Check if a book is available"
+					}
+				}
+			],
+			"description": "All endpoints related to book management"
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Get All Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all authors with pagination"
+					}
+				},
+				{
+					"name": "Get Author by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/{{authorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"{{authorId}}"
+							]
+						},
+						"description": "Get a specific author by ID"
+					}
+				},
+				{
+					"name": "Get Author with Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/{{authorId}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"{{authorId}}",
+								"books"
+							]
+						},
+						"description": "Get an author with their books"
+					}
+				},
+				{
+					"name": "Search Authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/search?searchTerm=author name",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"search"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "author name"
+								}
+							]
+						},
+						"description": "Search authors by name"
+					}
+				},
+				{
+					"name": "Get Authors by Book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/book/{{bookId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"book",
+								"{{bookId}}"
+							]
+						},
+						"description": "Get all authors of a specific book"
+					}
+				},
+				{
+					"name": "Create Author",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"biography\": \"A renowned author known for...\",\n  \"birthDate\": \"1970-01-01T00:00:00Z\",\n  \"deathDate\": null,\n  \"photoUrl\": \"https://example.com/author-photo.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/authors",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors"
+							]
+						},
+						"description": "Create a new author"
+					}
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\",\n  \"biography\": \"Updated biography...\",\n  \"birthDate\": \"1975-06-15T00:00:00Z\",\n  \"deathDate\": null,\n  \"photoUrl\": \"https://example.com/updated-author-photo.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/{{authorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"{{authorId}}"
+							]
+						},
+						"description": "Update an existing author"
+					}
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/authors/{{authorId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"authors",
+								"{{authorId}}"
+							]
+						},
+						"description": "Delete an author"
+					}
+				}
+			],
+			"description": "All endpoints related to author management"
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all categories with pagination"
+					}
+				},
+				{
+					"name": "Get Category by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{categoryId}}"
+							]
+						},
+						"description": "Get a specific category by ID"
+					}
+				},
+				{
+					"name": "Get Category with Subcategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{categoryId}}/subcategories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{categoryId}}",
+								"subcategories"
+							]
+						},
+						"description": "Get a category with its subcategories"
+					}
+				},
+				{
+					"name": "Get Category with Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{categoryId}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{categoryId}}",
+								"books"
+							]
+						},
+						"description": "Get a category with associated books"
+					}
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Science Fiction\",\n  \"description\": \"Books about futuristic concepts and technology\",\n  \"parentCategoryId\": null\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						},
+						"description": "Create a new category"
+					}
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Category Name\",\n  \"description\": \"Updated category description\",\n  \"parentCategoryId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{categoryId}}"
+							]
+						},
+						"description": "Update an existing category"
+					}
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/categories/{{categoryId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"{{categoryId}}"
+							]
+						},
+						"description": "Delete a category"
+					}
+				}
+			],
+			"description": "All endpoints related to category management"
+		},
+		{
+			"name": "Publishers",
+			"item": [
+				{
+					"name": "Get All Publishers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers?page=1&pageSize=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get all publishers with pagination"
+					}
+				},
+				{
+					"name": "Get Publisher by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"{{publisherId}}"
+							]
+						},
+						"description": "Get a specific publisher by ID"
+					}
+				},
+				{
+					"name": "Get Publisher with Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/{{publisherId}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"{{publisherId}}",
+								"books"
+							]
+						},
+						"description": "Get a publisher with their books"
+					}
+				},
+				{
+					"name": "Search Publishers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/search?searchTerm=publisher name",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"search"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "publisher name"
+								}
+							]
+						},
+						"description": "Search publishers by name"
+					}
+				},
+				{
+					"name": "Create Publisher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Sample Publishing House\",\n  \"address\": \"123 Main Street, City, Country\",\n  \"website\": \"https://www.samplepublisher.com\",\n  \"establishedDate\": \"1990-01-01T00:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers"
+							]
+						},
+						"description": "Create a new publisher"
+					}
+				},
+				{
+					"name": "Update Publisher",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Updated Publishing House\",\n  \"address\": \"456 Updated Street, New City, Country\",\n  \"website\": \"https://www.updatedpublisher.com\",\n  \"establishedDate\": \"1985-06-15T00:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"{{publisherId}}"
+							]
+						},
+						"description": "Update an existing publisher"
+					}
+				},
+				{
+					"name": "Delete Publisher",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/publishers/{{publisherId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"publishers",
+								"{{publisherId}}"
+							]
+						},
+						"description": "Delete a publisher"
+					}
+				}
+			],
+			"description": "All endpoints related to publisher management"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:5001",
+			"type": "string",
+			"description": "Base URL for the ShaiebLibrary Book Catalog API"
+		},
+		{
+			"key": "bookId",
+			"value": "1",
+			"type": "string",
+			"description": "Sample book ID for testing"
+		},
+		{
+			"key": "authorId",
+			"value": "1",
+			"type": "string",
+			"description": "Sample author ID for testing"
+		},
+		{
+			"key": "categoryId",
+			"value": "1",
+			"type": "string",
+			"description": "Sample category ID for testing"
+		},
+		{
+			"key": "publisherId",
+			"value": "1",
+			"type": "string",
+			"description": "Sample publisher ID for testing"
+		},
+		{
+			"key": "isbn",
+			"value": "978-0123456789",
+			"type": "string",
+			"description": "Sample ISBN for testing"
+		}
+	]
+}
