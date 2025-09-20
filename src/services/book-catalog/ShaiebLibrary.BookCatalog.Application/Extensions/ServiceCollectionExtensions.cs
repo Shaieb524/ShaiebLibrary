@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using ShaiebLibrary.BookCatalog.Application.Services.Interfaces;
+using System.Reflection;
 
 namespace ShaiebLibrary.BookCatalog.Application.Extensions;
 
@@ -13,8 +14,8 @@ public static class ServiceCollectionExtensions
         // services.AddScoped<ICategoryService, CategoryService>();
         // services.AddScoped<IPublisherService, PublisherService>();
 
-        // Add AutoMapper
-        services.AddAutoMapper(typeof(ServiceCollectionExtensions));
+        // Add AutoMapper with all profiles from this assembly
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         return services;
     }
